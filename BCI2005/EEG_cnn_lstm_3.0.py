@@ -34,8 +34,8 @@ pool_size_2 = (20,1)
 kernel_size_1 = (5, 1)
 kernel_size_2 = (200,1)
 
-X_data = np.load('train_data.npy')
-y_data = np.load('label_data.npy')
+X_data = np.load('/home/xcat/experiment/BCI2005IIIa/train_data.npy')
+y_data = np.load('/home/xcat/experiment/BCI2005IIIa/label_data.npy')
 
 #scale data
 temp_max = np.fabs(X_data).max()

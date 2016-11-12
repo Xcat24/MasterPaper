@@ -72,7 +72,6 @@ Y_test = np_utils.to_categorical(Y_test, nb_classes)
 
 print('y_train shape:',Y_train.shape)
 print('y_test shape:',Y_test.shape)
-print(Y_train[0:15,:])
 model = Sequential()
 
 conv1 = Convolution2D(nb_filters, kernel_size_1[0], kernel_size_1[1], border_mode='same', input_shape=input_shape)

@@ -7,6 +7,7 @@ import numpy as np
 from keras.models import Sequential, load_model 
 from keras import backend as K                                                                                                                                                                          
 from keras.utils.visualize_util import plot
+from utils.visualize_data import save_img
 
 def load_data():                                                                                                                                                                                        
     data = [np.loadtxt('/home/xcat/experiment/MrsFang_Task/BCICIV_calib_ds1a_1000Hz/data_BCI2008_ds1a_trial_{}.txt'.format(i+1)) for i in range(200)]                                                   
@@ -45,4 +46,19 @@ get_pool1_output = K.function([model.layers[0].input], [model.layers[2].output])
 get_conv2_output = K.function([model.layers[0].input], [model.layers[4].output])
 get_pool2_output = K.function([model.layers[0].input], [model.layers[7].output])
 
-print(type(get_conv1_output([X_train[0:0,:,:,:]])[0]))  #numpy.ndarray
+#print(type(get_conv1_output([X_train[0:0,:,:,:]])[0]))  #numpy.ndarray
+conv1_output = get_conv1_output([X_train[0:1,:,:,:]])[0]  #numpy.ndarray
+pool1_output = get_pool1_output([X_train[0:1,:,:,:]])[0]  #numpy.ndarray
+conv2_output = get_conv2_output([X_train[0:1,:,:,:]])[0]  #numpy.ndarray
+pool2_output = get_pool2_output([X_train[0:1,:,:,:]])[0]  #numpy.ndarray
+
+np.save('model2.2_'+model.layers[1].name, conv1_output)
+np.save('model2.2_'+model.layers[2].name, pool1_output)
+np.save('model2.2_'+model.layers[4].name, conv2_output)
+np.save('model2.2_'+model.layers[7].name, pool2_output)
+
+save_img(conv1_output[0,0,:,:], 'model2.2_'+model.layers[1].name+'.png')
+save_img(pool1_output[0,0,:,:], 'model2.2_'+model.layers[2].name+'.png')
+save_img(conv2_output[0,0,:,:], 'model2.2_'+model.layers[4].name+'.png')
+save_img(pool2_output[0,:,:], 'model2.2_'+model.layers[7].name+'.png')
+

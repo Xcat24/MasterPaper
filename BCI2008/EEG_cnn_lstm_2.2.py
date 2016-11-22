@@ -7,10 +7,6 @@ add a LSTM layer
 
 from __future__ import print_function
 import numpy as np
-import tensorflow
-from tensorflow.python.ops import control_flow_ops
-tensorflow.python.control_flow_ops = control_flow_ops
-
 np.random.seed(1337)  # for reproducibility
 
 from keras.datasets import mnist
@@ -24,7 +20,7 @@ from keras.utils.visualize_util import plot
 
 batch_size = 10
 nb_classes = 2
-nb_epoch = 500
+nb_epoch = 100
 
 # input image dimensions
 img_rows, img_cols = 4000, 59
@@ -37,12 +33,8 @@ pool_size_2 = (40,1)
 kernel_size_1 = (5, 1)
 kernel_size_2 = (500,1)
 
-def load_data():
-    data = [np.loadtxt('/home/xcat/experiment/MrsFang_Task/BCICIV_calib_ds1a_1000Hz/data_BCI2008_ds1a_trial_{}.txt'.format(i+1)) for i in range(200)]
-    label = np.loadtxt('/home/xcat/experiment/MrsFang_Task/BCICIV_calib_ds1a_1000Hz/labels_BCI2008_ds1a.txt')
-    return np.array(data),label
-
-X_data, y_data = load_data()
+X_data = np.load('/home/xcat/experiment/BCI2008/ds1a/train.npy')
+y_data = np.load('/home/xcat/experiment/BCI2008/ds1a/label.npy')
 #scale data
 temp_max = np.fabs(X_data).max()
 print('max:', temp_max)
@@ -100,7 +92,6 @@ print('pool2\'s output shape:', pool2.output_shape)
 reshape = Reshape((2000,59))
 model.add(reshape)
 print('reshape\'s output shape:',reshape.output_shape)
-model.add(Permute((2,1)))
 
 model.add(LSTM(128,return_sequences=True))
 model.add(LSTM(128))

@@ -6,8 +6,10 @@ import numpy as np
 
 from keras.models import Sequential, load_model 
 from keras import backend as K                                                                                                                                                                          
-
-# input image dimensions                                                                                                                              
+ModelName = '/home/xcat/experiment/BCI2008/ds1a/model/2lstm_false_RMSprop_lr0.001/Li_model_RMSprop_lr0.001.h5'
+OutputPath = '/home/xcat/experiment/BCI2008/ds1a/model/2lstm_false_RMSprop_lr0.001/'
+pos_index = 0
+neg_index = 3
 img_rows, img_cols = 4000, 59 
 X_data = np.load('/home/xcat/experiment/BCI2008/ds1a/train.npy')
 y_data = np.load('/home/xcat/experiment/BCI2008/ds1a/label.npy')
@@ -15,24 +17,38 @@ y_data = np.load('/home/xcat/experiment/BCI2008/ds1a/label.npy')
 temp_max = np.fabs(X_data).max()
 X_data = X_data/temp_max
 y_data = y_data/2 + 0.5
-#print('x_data:',X_data[0,0:10,:])                                                                                                                                                 
 
-X_train = X_data[:160,0:4000,:]    #.transpose((0,2,1))
-X_test = X_data[160:,0:4000,:]     #.transpose((0,2,1))
-Y_train = y_data[:160]
-Y_test = y_data[160:]
-input_shape = (1, img_rows, img_cols)
+pos_sample = X_data[pos_index]
+neg_sample = X_data[neg_index]
+pos_sample = pos_sample.reshape((-1,1,img_rows,img_cols))
+neg_sample = neg_sample.reshape((-1,1,img_rows,img_cols))
 
-X_train = X_train.astype('float32')
-X_test = X_test.astype('float32') 
-
-X_train = X_train.reshape((-1,1,img_rows,img_cols))
-X_test = X_test.reshape((-1,1,img_rows,img_cols))
-
-np.save('/home/xcat/experiment/BCI2008/ds1a/input_data', X_train)
-model = load_model("/home/xcat/MasterPaper/model/model_2.3_RMSprop_lr0.001.h5")
+model = load_model(ModelName)
 #print(model.get_config())
 #print(model.layers[0].get_config())
+get_conv1_output = K.function([model.layers[0].input], [model.layers[1].output])
+get_pool1_output = K.function([model.layers[0].input], [model.layers[2].output])
+get_conv2_output = K.function([model.layers[0].input], [model.layers[4].output])
+get_pool2_output = K.function([model.layers[0].input], [model.layers[7].output])
+
+conv1_output_pos = get_conv1_output([pos_sample])[0]  #numpy.ndarray
+pool1_output_pos = get_pool1_output([pos_sample])[0]  #numpy.ndarray
+conv2_output_pos = get_conv2_output([pos_sample])[0]  #numpy.ndarray
+pool2_output_pos = get_pool2_output([pos_sample])[0]  #numpy.ndarray
+conv1_output_neg = get_conv1_output([neg_sample])[0]  #numpy.ndarray
+pool1_output_neg = get_pool1_output([neg_sample])[0]  #numpy.ndarray
+conv2_output_neg = get_conv2_output([neg_sample])[0]  #numpy.ndarray
+pool2_output_neg = get_pool2_output([neg_sample])[0]  #numpy.ndarray
+
+np.save(OutputPath+model.layers[1].name, conv1_output_pos)
+np.save(OutputPath+model.layers[2].name, pool1_output_pos)
+np.save(OutputPath+model.layers[4].name, conv2_output_pos)
+np.save(OutputPath+model.layers[7].name, pool2_output_pos)
+np.save(OutputPath+model.layers[1].name, conv1_output_neg)
+np.save(OutputPath+model.layers[2].name, pool1_output_neg)
+np.save(OutputPath+model.layers[4].name, conv2_output_neg)
+np.save(OutputPath+model.layers[7].name, pool2_output_neg)
+
 
 def save_conv1_out():
         #define function to get output of some layer
@@ -66,10 +82,10 @@ def save_pool2_out():
         np.save('/home/xcat/experiment/BCI2008/ds1a/model2.3_'+model.layers[7].name, pool2_output)
         return
 
-if __name__ == '__main__':
-    save_conv1_out()
-    save_pool1_out()
-    save_conv2_out()
-    save_pool2_out()
+#if __name__ == '__main__':
+#    save_conv1_out()
+#    save_pool1_out()
+#    save_conv2_out()
+#    save_pool2_out()
 
 

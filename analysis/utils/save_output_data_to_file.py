@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from __future__ import print_function                                                                                                                                                                   
-import numpy as np                                                                                                                                                                                      
-
+from __future__ import print_function 
+import numpy as np 
 
 from keras.models import Sequential, load_model 
-from keras import backend as K                                                                                                                                                                          
+from keras import backend as K 
+
 ModelName = '/home/xcat/experiment/BCI2008/ds1a/model/2lstm_false_RMSprop_lr0.001/Li_model_RMSprop_lr0.001.h5'
 OutputPath = '/home/xcat/experiment/BCI2008/ds1a/model/2lstm_false_RMSprop_lr0.001/'
 pos_index = 0

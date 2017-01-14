@@ -1,0 +1,248 @@
+max: 863.779
+X_train shape: (224, 1, 200, 118)
+224 train samples
+56 test samples
+y_train shape: (224, 2)
+y_test shape: (56, 2)
+____________________________________________________________________________________________________
+Layer (type)                     Output Shape          Param #     Connected to                     
+====================================================================================================
+convolution2d_1 (Convolution2D)  (None, 32, 200, 118)  192         convolution2d_input_1[0][0]      
+____________________________________________________________________________________________________
+activation_1 (Activation)        (None, 32, 200, 118)  0           convolution2d_1[0][0]            
+____________________________________________________________________________________________________
+averagepooling2d_1 (AveragePoolin(None, 32, 100, 118)  0           activation_1[0][0]               
+____________________________________________________________________________________________________
+convolution2d_2 (Convolution2D)  (None, 64, 100, 118)  6208        averagepooling2d_1[0][0]         
+____________________________________________________________________________________________________
+activation_2 (Activation)        (None, 64, 100, 118)  0           convolution2d_2[0][0]            
+____________________________________________________________________________________________________
+averagepooling2d_2 (AveragePoolin(None, 64, 50, 118)   0           activation_2[0][0]               
+____________________________________________________________________________________________________
+permute_1 (Permute)              (None, 50, 64, 118)   0           averagepooling2d_2[0][0]         
+____________________________________________________________________________________________________
+reshape_1 (Reshape)              (None, 50, 7552)      0           permute_1[0][0]                  
+____________________________________________________________________________________________________
+lstm_1 (LSTM)                    (None, 50, 128)       3932672     reshape_1[0][0]                  
+____________________________________________________________________________________________________
+lstm_2 (LSTM)                    (None, 50, 128)       131584      lstm_1[0][0]                     
+____________________________________________________________________________________________________
+flatten_1 (Flatten)              (None, 6400)          0           lstm_2[0][0]                     
+____________________________________________________________________________________________________
+dense_1 (Dense)                  (None, 2)             12802       flatten_1[0][0]                  
+____________________________________________________________________________________________________
+activation_3 (Activation)        (None, 2)             0           dense_1[0][0]                    
+====================================================================================================
+Total params: 4083458
+____________________________________________________________________________________________________
+Train on 224 samples, validate on 56 samples
+Epoch 1/500
+Epoch 00000: val_acc improved from -inf to 0.46429, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2005IVa/model/2LSTM_true_average_tanh.h5
+29s - loss: 0.7062 - acc: 0.5000 - val_loss: 0.7034 - val_acc: 0.4643
+Epoch 2/500
+Epoch 00001: val_acc did not improve
+25s - loss: 0.7060 - acc: 0.4866 - val_loss: 0.7101 - val_acc: 0.4643
+Epoch 3/500
+Epoch 00002: val_acc improved from 0.46429 to 0.50000, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2005IVa/model/2LSTM_true_average_tanh.h5
+25s - loss: 0.6899 - acc: 0.5759 - val_loss: 0.7073 - val_acc: 0.5000
+Epoch 4/500
+Epoch 00003: val_acc improved from 0.50000 to 0.57143, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2005IVa/model/2LSTM_true_average_tanh.h5
+28s - loss: 0.6739 - acc: 0.5580 - val_loss: 0.7026 - val_acc: 0.5714
+Epoch 5/500
+Epoch 00004: val_acc did not improve
+27s - loss: 0.6658 - acc: 0.5938 - val_loss: 0.6820 - val_acc: 0.5000
+Epoch 6/500
+Epoch 00005: val_acc improved from 0.57143 to 0.60714, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2005IVa/model/2LSTM_true_average_tanh.h5
+25s - loss: 0.5687 - acc: 0.7143 - val_loss: 0.7670 - val_acc: 0.6071
+Epoch 7/500
+Epoch 00006: val_acc did not improve
+31s - loss: 0.5155 - acc: 0.7188 - val_loss: 0.8654 - val_acc: 0.5179
+Epoch 8/500
+Epoch 00007: val_acc did not improve
+25s - loss: 0.4345 - acc: 0.8080 - val_loss: 0.9750 - val_acc: 0.4464
+Epoch 9/500
+Epoch 00008: val_acc did not improve
+24s - loss: 0.3364 - acc: 0.8482 - val_loss: 0.9134 - val_acc: 0.5714
+Epoch 10/500
+Epoch 00009: val_acc did not improve
+25s - loss: 0.1863 - acc: 0.9420 - val_loss: 1.3742 - val_acc: 0.4643
+Epoch 11/500
+Epoch 00010: val_acc did not improve
+25s - loss: 0.1176 - acc: 0.9554 - val_loss: 1.4757 - val_acc: 0.5179
+Epoch 12/500
+Epoch 00011: val_acc did not improve
+24s - loss: 0.0435 - acc: 0.9911 - val_loss: 1.5552 - val_acc: 0.4286
+Epoch 13/500
+Epoch 00012: val_acc did not improve
+24s - loss: 0.0090 - acc: 1.0000 - val_loss: 1.8416 - val_acc: 0.5179
+Epoch 14/500
+Epoch 00013: val_acc did not improve
+27s - loss: 0.0047 - acc: 1.0000 - val_loss: 1.9824 - val_acc: 0.4464
+Epoch 15/500
+Epoch 00014: val_acc did not improve
+25s - loss: 0.0014 - acc: 1.0000 - val_loss: 2.2950 - val_acc: 0.4464
+Epoch 16/500
+Epoch 00015: val_acc did not improve
+21s - loss: 3.5189e-04 - acc: 1.0000 - val_loss: 2.3168 - val_acc: 0.4464
+Epoch 17/500
+Epoch 00016: val_acc did not improve
+24s - loss: 2.0527e-04 - acc: 1.0000 - val_loss: 2.3652 - val_acc: 0.4464
+Epoch 18/500
+Epoch 00017: val_acc did not improve
+24s - loss: 1.5677e-04 - acc: 1.0000 - val_loss: 2.4054 - val_acc: 0.4464
+Epoch 19/500
+Epoch 00018: val_acc did not improve
+24s - loss: 1.2718e-04 - acc: 1.0000 - val_loss: 2.4395 - val_acc: 0.4464
+Epoch 20/500
+Epoch 00019: val_acc did not improve
+24s - loss: 1.0666e-04 - acc: 1.0000 - val_loss: 2.4611 - val_acc: 0.4464
+Epoch 21/500
+Epoch 00020: val_acc did not improve
+24s - loss: 9.2664e-05 - acc: 1.0000 - val_loss: 2.4847 - val_acc: 0.4643
+Epoch 22/500
+Epoch 00021: val_acc did not improve
+24s - loss: 8.2172e-05 - acc: 1.0000 - val_loss: 2.5123 - val_acc: 0.4643
+Epoch 23/500
+Epoch 00022: val_acc did not improve
+24s - loss: 7.3117e-05 - acc: 1.0000 - val_loss: 2.5268 - val_acc: 0.4643
+Epoch 24/500
+Epoch 00023: val_acc did not improve
+27s - loss: 6.5886e-05 - acc: 1.0000 - val_loss: 2.5507 - val_acc: 0.4643
+Epoch 25/500
+Epoch 00024: val_acc did not improve
+21s - loss: 5.9588e-05 - acc: 1.0000 - val_loss: 2.5715 - val_acc: 0.4643
+Epoch 26/500
+Epoch 00025: val_acc did not improve
+30s - loss: 5.4634e-05 - acc: 1.0000 - val_loss: 2.5903 - val_acc: 0.4643
+Epoch 27/500
+Epoch 00026: val_acc did not improve
+20s - loss: 4.9973e-05 - acc: 1.0000 - val_loss: 2.6067 - val_acc: 0.4643
+Epoch 28/500
+Epoch 00027: val_acc did not improve
+22s - loss: 4.6245e-05 - acc: 1.0000 - val_loss: 2.6256 - val_acc: 0.4643
+Epoch 29/500
+Epoch 00028: val_acc did not improve
+24s - loss: 4.2873e-05 - acc: 1.0000 - val_loss: 2.6403 - val_acc: 0.4643
+Epoch 30/500
+Epoch 00029: val_acc did not improve
+28s - loss: 3.9878e-05 - acc: 1.0000 - val_loss: 2.6572 - val_acc: 0.4821
+Epoch 31/500
+Epoch 00030: val_acc did not improve
+25s - loss: 3.7194e-05 - acc: 1.0000 - val_loss: 2.6695 - val_acc: 0.5000
+Epoch 32/500
+Epoch 00031: val_acc did not improve
+23s - loss: 3.4683e-05 - acc: 1.0000 - val_loss: 2.6816 - val_acc: 0.5000
+Epoch 33/500
+Epoch 00032: val_acc did not improve
+25s - loss: 3.2504e-05 - acc: 1.0000 - val_loss: 2.6975 - val_acc: 0.5000
+Epoch 34/500
+Epoch 00033: val_acc did not improve
+27s - loss: 3.0519e-05 - acc: 1.0000 - val_loss: 2.7082 - val_acc: 0.5000
+Epoch 35/500
+Epoch 00034: val_acc did not improve
+25s - loss: 2.8745e-05 - acc: 1.0000 - val_loss: 2.7230 - val_acc: 0.5000
+Epoch 36/500
+Epoch 00035: val_acc did not improve
+25s - loss: 2.7096e-05 - acc: 1.0000 - val_loss: 2.7367 - val_acc: 0.5000
+Epoch 37/500
+Epoch 00036: val_acc did not improve
+24s - loss: 2.5523e-05 - acc: 1.0000 - val_loss: 2.7503 - val_acc: 0.5000
+Epoch 38/500
+Epoch 00037: val_acc did not improve
+24s - loss: 2.4200e-05 - acc: 1.0000 - val_loss: 2.7629 - val_acc: 0.5000
+Epoch 39/500
+Epoch 00038: val_acc did not improve
+24s - loss: 2.2941e-05 - acc: 1.0000 - val_loss: 2.7756 - val_acc: 0.5000
+Epoch 40/500
+Epoch 00039: val_acc did not improve
+25s - loss: 2.1762e-05 - acc: 1.0000 - val_loss: 2.7875 - val_acc: 0.5000
+Epoch 41/500
+Epoch 00040: val_acc did not improve
+24s - loss: 2.0668e-05 - acc: 1.0000 - val_loss: 2.8001 - val_acc: 0.5000
+Epoch 42/500
+Epoch 00041: val_acc did not improve
+24s - loss: 1.9640e-05 - acc: 1.0000 - val_loss: 2.8090 - val_acc: 0.5000
+Epoch 43/500
+Epoch 00042: val_acc did not improve
+24s - loss: 1.8743e-05 - acc: 1.0000 - val_loss: 2.8204 - val_acc: 0.5000
+Epoch 44/500
+Epoch 00043: val_acc did not improve
+25s - loss: 1.7828e-05 - acc: 1.0000 - val_loss: 2.8288 - val_acc: 0.5000
+Epoch 45/500
+Epoch 00044: val_acc did not improve
+26s - loss: 1.7091e-05 - acc: 1.0000 - val_loss: 2.8435 - val_acc: 0.5000
+Epoch 46/500
+Epoch 00045: val_acc did not improve
+24s - loss: 1.6263e-05 - acc: 1.0000 - val_loss: 2.8528 - val_acc: 0.5000
+Epoch 47/500
+Epoch 00046: val_acc did not improve
+25s - loss: 1.5583e-05 - acc: 1.0000 - val_loss: 2.8609 - val_acc: 0.5000
+Epoch 48/500
+Epoch 00047: val_acc did not improve
+25s - loss: 1.4939e-05 - acc: 1.0000 - val_loss: 2.8722 - val_acc: 0.5000
+Epoch 49/500
+Epoch 00048: val_acc did not improve
+23s - loss: 1.4281e-05 - acc: 1.0000 - val_loss: 2.8806 - val_acc: 0.5000
+Epoch 50/500
+Epoch 00049: val_acc did not improve
+23s - loss: 1.3683e-05 - acc: 1.0000 - val_loss: 2.8899 - val_acc: 0.5000
+Epoch 51/500
+Epoch 00050: val_acc did not improve
+22s - loss: 1.3172e-05 - acc: 1.0000 - val_loss: 2.9001 - val_acc: 0.5000
+Epoch 52/500
+Epoch 00051: val_acc did not improve
+24s - loss: 1.2620e-05 - acc: 1.0000 - val_loss: 2.9089 - val_acc: 0.5000
+Epoch 53/500
+Epoch 00052: val_acc did not improve
+24s - loss: 1.2160e-05 - acc: 1.0000 - val_loss: 2.9191 - val_acc: 0.5000
+Epoch 54/500
+Epoch 00053: val_acc did not improve
+24s - loss: 1.1682e-05 - acc: 1.0000 - val_loss: 2.9268 - val_acc: 0.5000
+Epoch 55/500
+Epoch 00054: val_acc did not improve
+24s - loss: 1.1228e-05 - acc: 1.0000 - val_loss: 2.9364 - val_acc: 0.5000
+Epoch 56/500
+Epoch 00055: val_acc did not improve
+24s - loss: 1.0817e-05 - acc: 1.0000 - val_loss: 2.9441 - val_acc: 0.5000
+Epoch 57/500
+Epoch 00056: val_acc did not improve
+24s - loss: 1.0416e-05 - acc: 1.0000 - val_loss: 2.9538 - val_acc: 0.5000
+Epoch 58/500
+Epoch 00057: val_acc did not improve
+25s - loss: 1.0055e-05 - acc: 1.0000 - val_loss: 2.9623 - val_acc: 0.5000
+Epoch 59/500
+Epoch 00058: val_acc did not improve
+24s - loss: 9.6839e-06 - acc: 1.0000 - val_loss: 2.9709 - val_acc: 0.5000
+Epoch 60/500
+Epoch 00059: val_acc did not improve
+28s - loss: 9.3593e-06 - acc: 1.0000 - val_loss: 2.9809 - val_acc: 0.5000
+Epoch 61/500
+Epoch 00060: val_acc did not improve
+24s - loss: 9.0399e-06 - acc: 1.0000 - val_loss: 2.9888 - val_acc: 0.5000
+Epoch 62/500
+Epoch 00061: val_acc did not improve
+20s - loss: 8.7265e-06 - acc: 1.0000 - val_loss: 2.9975 - val_acc: 0.5000
+Epoch 63/500
+Epoch 00062: val_acc did not improve
+25s - loss: 8.4385e-06 - acc: 1.0000 - val_loss: 3.0046 - val_acc: 0.5000
+Epoch 64/500
+Epoch 00063: val_acc did not improve
+31s - loss: 8.1671e-06 - acc: 1.0000 - val_loss: 3.0130 - val_acc: 0.5000
+Epoch 65/500
+Epoch 00064: val_acc did not improve
+25s - loss: 7.9036e-06 - acc: 1.0000 - val_loss: 3.0225 - val_acc: 0.5000
+Epoch 66/500
+Epoch 00065: val_acc did not improve
+25s - loss: 7.6462e-06 - acc: 1.0000 - val_loss: 3.0265 - val_acc: 0.5000
+Epoch 67/500
+Epoch 00066: val_acc did not improve
+24s - loss: 7.3943e-06 - acc: 1.0000 - val_loss: 3.0352 - val_acc: 0.5000
+Epoch 68/500
+Epoch 00067: val_acc did not improve
+24s - loss: 7.1633e-06 - acc: 1.0000 - val_loss: 3.0457 - val_acc: 0.5000
+Epoch 69/500
+Epoch 00068: val_acc did not improve
+29s - loss: 6.9355e-06 - acc: 1.0000 - val_loss: 3.0526 - val_acc: 0.5000
+Epoch 70/500
+Epoch 00069: val_acc did not improve
+26s - loss: 6.7295e-06 - acc: 1.0000 -

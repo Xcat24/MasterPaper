@@ -1,0 +1,1538 @@
+X_train shape: (160, 1, 4000, 59, 59)
+160 train samples
+40 test samples
+y_train shape: (160, 2)
+y_test shape: (40, 2)
+(None, 100, 16, 14, 14)
+____________________________________________________________________________________________________
+Layer (type)                     Output Shape          Param #     Connected to                     
+====================================================================================================
+convolution3d_1 (Convolution3D)  (None, 8, 4000, 59, 59208         convolution3d_input_1[0][0]      
+____________________________________________________________________________________________________
+activation_1 (Activation)        (None, 8, 4000, 59, 590           convolution3d_1[0][0]            
+____________________________________________________________________________________________________
+maxpooling3d_1 (MaxPooling3D)    (None, 8, 2000, 29, 290           activation_1[0][0]               
+____________________________________________________________________________________________________
+convolution3d_2 (Convolution3D)  (None, 16, 2000, 29, 21168        maxpooling3d_1[0][0]             
+____________________________________________________________________________________________________
+activation_2 (Activation)        (None, 16, 2000, 29, 20           convolution3d_2[0][0]            
+____________________________________________________________________________________________________
+maxpooling3d_2 (MaxPooling3D)    (None, 16, 100, 14, 140           activation_2[0][0]               
+____________________________________________________________________________________________________
+permute_1 (Permute)              (None, 100, 16, 14, 140           maxpooling3d_2[0][0]             
+____________________________________________________________________________________________________
+reshape_1 (Reshape)              (None, 100, 3136)     0           permute_1[0][0]                  
+____________________________________________________________________________________________________
+lstm_1 (LSTM)                    (None, 100, 128)      1671680     reshape_1[0][0]                  
+____________________________________________________________________________________________________
+lstm_2 (LSTM)                    (None, 100, 128)      131584      lstm_1[0][0]                     
+____________________________________________________________________________________________________
+flatten_1 (Flatten)              (None, 12800)         0           lstm_2[0][0]                     
+____________________________________________________________________________________________________
+dense_1 (Dense)                  (None, 2)             25602       flatten_1[0][0]                  
+____________________________________________________________________________________________________
+activation_3 (Activation)        (None, 2)             0           dense_1[0][0]                    
+====================================================================================================
+Total params: 1830242
+____________________________________________________________________________________________________
+Train on 160 samples, validate on 40 samples
+Epoch 1/500
+Epoch 00000: val_acc improved from -inf to 0.57500, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2008/ds1a/model/little_wave/4000_2LSTM_true-adam_max_relu.h5
+122s - loss: 0.9946 - acc: 0.5250 - val_loss: 0.6829 - val_acc: 0.5750
+Epoch 2/500
+Epoch 00001: val_acc did not improve
+118s - loss: 0.8193 - acc: 0.4438 - val_loss: 0.6868 - val_acc: 0.5750
+Epoch 3/500
+Epoch 00002: val_acc did not improve
+116s - loss: 0.7409 - acc: 0.4813 - val_loss: 0.8757 - val_acc: 0.4250
+Epoch 4/500
+Epoch 00003: val_acc did not improve
+115s - loss: 0.7139 - acc: 0.4813 - val_loss: 0.7365 - val_acc: 0.4250
+Epoch 5/500
+Epoch 00004: val_acc did not improve
+115s - loss: 0.7046 - acc: 0.4312 - val_loss: 0.6921 - val_acc: 0.5750
+Epoch 6/500
+Epoch 00005: val_acc did not improve
+115s - loss: 0.6939 - acc: 0.4813 - val_loss: 0.6959 - val_acc: 0.4250
+Epoch 7/500
+Epoch 00006: val_acc did not improve
+115s - loss: 0.6951 - acc: 0.5187 - val_loss: 0.6958 - val_acc: 0.4250
+Epoch 8/500
+Epoch 00007: val_acc did not improve
+115s - loss: 0.6954 - acc: 0.5187 - val_loss: 0.6938 - val_acc: 0.4250
+Epoch 9/500
+Epoch 00008: val_acc did not improve
+115s - loss: 0.6942 - acc: 0.5187 - val_loss: 0.6941 - val_acc: 0.4250
+Epoch 10/500
+Epoch 00009: val_acc did not improve
+115s - loss: 0.6932 - acc: 0.5187 - val_loss: 0.6953 - val_acc: 0.4250
+Epoch 11/500
+Epoch 00010: val_acc did not improve
+114s - loss: 0.6933 - acc: 0.5187 - val_loss: 0.6953 - val_acc: 0.4250
+Epoch 12/500
+Epoch 00011: val_acc did not improve
+115s - loss: 0.6933 - acc: 0.5187 - val_loss: 0.6952 - val_acc: 0.4250
+Epoch 13/500
+Epoch 00012: val_acc did not improve
+115s - loss: 0.6933 - acc: 0.4875 - val_loss: 0.6961 - val_acc: 0.4250
+Epoch 14/500
+Epoch 00013: val_acc did not improve
+116s - loss: 0.6927 - acc: 0.5187 - val_loss: 0.6963 - val_acc: 0.4250
+Epoch 15/500
+Epoch 00014: val_acc did not improve
+114s - loss: 0.6956 - acc: 0.4875 - val_loss: 0.7064 - val_acc: 0.4250
+Epoch 16/500
+Epoch 00015: val_acc did not improve
+116s - loss: 0.6938 - acc: 0.5187 - val_loss: 0.6976 - val_acc: 0.4250
+Epoch 17/500
+Epoch 00016: val_acc did not improve
+115s - loss: 0.6933 - acc: 0.5187 - val_loss: 0.6968 - val_acc: 0.4250
+Epoch 18/500
+Epoch 00017: val_acc did not improve
+115s - loss: 0.6922 - acc: 0.5187 - val_loss: 0.6973 - val_acc: 0.4250
+Epoch 19/500
+Epoch 00018: val_acc did not improve
+115s - loss: 0.6935 - acc: 0.5062 - val_loss: 0.6969 - val_acc: 0.4250
+Epoch 20/500
+Epoch 00019: val_acc did not improve
+115s - loss: 0.6929 - acc: 0.5187 - val_loss: 0.6977 - val_acc: 0.4250
+Epoch 21/500
+Epoch 00020: val_acc did not improve
+115s - loss: 0.6939 - acc: 0.4875 - val_loss: 0.6983 - val_acc: 0.4250
+Epoch 22/500
+Epoch 00021: val_acc did not improve
+115s - loss: 0.7526 - acc: 0.5312 - val_loss: 0.6833 - val_acc: 0.5750
+Epoch 23/500
+Epoch 00022: val_acc did not improve
+115s - loss: 0.6958 - acc: 0.5312 - val_loss: 0.6977 - val_acc: 0.4250
+Epoch 24/500
+Epoch 00023: val_acc did not improve
+115s - loss: 0.6931 - acc: 0.5187 - val_loss: 0.6971 - val_acc: 0.4250
+Epoch 25/500
+Epoch 00024: val_acc did not improve
+115s - loss: 0.6927 - acc: 0.5187 - val_loss: 0.6966 - val_acc: 0.4250
+Epoch 26/500
+Epoch 00025: val_acc did not improve
+114s - loss: 0.6978 - acc: 0.5062 - val_loss: 0.7039 - val_acc: 0.4250
+Epoch 27/500
+Epoch 00026: val_acc did not improve
+115s - loss: 0.6938 - acc: 0.5187 - val_loss: 0.6974 - val_acc: 0.4250
+Epoch 28/500
+Epoch 00027: val_acc did not improve
+115s - loss: 0.6928 - acc: 0.5187 - val_loss: 0.6975 - val_acc: 0.4250
+Epoch 29/500
+Epoch 00028: val_acc did not improve
+116s - loss: 0.6929 - acc: 0.5187 - val_loss: 0.6986 - val_acc: 0.4250
+Epoch 30/500
+Epoch 00029: val_acc did not improve
+115s - loss: 0.6925 - acc: 0.5187 - val_loss: 0.6982 - val_acc: 0.4250
+Epoch 31/500
+Epoch 00030: val_acc did not improve
+115s - loss: 0.6927 - acc: 0.5187 - val_loss: 0.6978 - val_acc: 0.4250
+Epoch 32/500
+Epoch 00031: val_acc did not improve
+115s - loss: 0.6916 - acc: 0.5187 - val_loss: 0.7043 - val_acc: 0.4250
+Epoch 33/500
+Epoch 00032: val_acc did not improve
+114s - loss: 0.6888 - acc: 0.5500 - val_loss: 0.7347 - val_acc: 0.5750
+Epoch 34/500
+Epoch 00033: val_acc did not improve
+114s - loss: 0.7049 - acc: 0.5438 - val_loss: 0.7003 - val_acc: 0.4250
+Epoch 35/500
+Epoch 00034: val_acc did not improve
+115s - loss: 0.6936 - acc: 0.5187 - val_loss: 0.6969 - val_acc: 0.4250
+Epoch 36/500
+Epoch 00035: val_acc did not improve
+115s - loss: 0.6932 - acc: 0.5187 - val_loss: 0.6986 - val_acc: 0.4250
+Epoch 37/500
+Epoch 00036: val_acc did not improve
+116s - loss: 0.6921 - acc: 0.5187 - val_loss: 0.6983 - val_acc: 0.4250
+Epoch 38/500
+Epoch 00037: val_acc did not improve
+115s - loss: 0.6903 - acc: 0.5312 - val_loss: 0.6863 - val_acc: 0.5750
+Epoch 39/500
+Epoch 00038: val_acc did not improve
+116s - loss: 0.7015 - acc: 0.5062 - val_loss: 0.6956 - val_acc: 0.4250
+Epoch 40/500
+Epoch 00039: val_acc did not improve
+115s - loss: 0.6956 - acc: 0.5563 - val_loss: 0.7050 - val_acc: 0.4250
+Epoch 41/500
+Epoch 00040: val_acc did not improve
+115s - loss: 0.6838 - acc: 0.5687 - val_loss: 0.6984 - val_acc: 0.4750
+Epoch 42/500
+Epoch 00041: val_acc did not improve
+115s - loss: 0.6661 - acc: 0.6562 - val_loss: 0.8725 - val_acc: 0.4250
+Epoch 43/500
+Epoch 00042: val_acc did not improve
+115s - loss: 0.6102 - acc: 0.7188 - val_loss: 0.7691 - val_acc: 0.4750
+Epoch 44/500
+Epoch 00043: val_acc did not improve
+115s - loss: 0.5730 - acc: 0.7125 - val_loss: 0.7348 - val_acc: 0.4250
+Epoch 45/500
+Epoch 00044: val_acc did not improve
+115s - loss: 0.5257 - acc: 0.7500 - val_loss: 0.7799 - val_acc: 0.5000
+Epoch 46/500
+Epoch 00045: val_acc did not improve
+116s - loss: 0.5261 - acc: 0.7125 - val_loss: 0.8287 - val_acc: 0.5250
+Epoch 47/500
+Epoch 00046: val_acc did not improve
+116s - loss: 0.4608 - acc: 0.7438 - val_loss: 0.9490 - val_acc: 0.4750
+Epoch 48/500
+Epoch 00047: val_acc did not improve
+115s - loss: 0.4332 - acc: 0.8250 - val_loss: 0.9970 - val_acc: 0.4750
+Epoch 49/500
+Epoch 00048: val_acc did not improve
+116s - loss: 0.3675 - acc: 0.8500 - val_loss: 1.0339 - val_acc: 0.4750
+Epoch 50/500
+Epoch 00049: val_acc did not improve
+115s - loss: 0.3177 - acc: 0.8688 - val_loss: 1.1578 - val_acc: 0.5250
+Epoch 51/500
+Epoch 00050: val_acc did not improve
+115s - loss: 0.2538 - acc: 0.9125 - val_loss: 1.3539 - val_acc: 0.4750
+Epoch 52/500
+Epoch 00051: val_acc did not improve
+116s - loss: 0.2148 - acc: 0.9313 - val_loss: 1.5993 - val_acc: 0.5500
+Epoch 53/500
+Epoch 00052: val_acc did not improve
+115s - loss: 0.1484 - acc: 0.9625 - val_loss: 1.8497 - val_acc: 0.4750
+Epoch 54/500
+Epoch 00053: val_acc did not improve
+116s - loss: 0.0632 - acc: 0.9938 - val_loss: 2.0939 - val_acc: 0.5500
+Epoch 55/500
+Epoch 00054: val_acc did not improve
+115s - loss: 0.0294 - acc: 1.0000 - val_loss: 2.3483 - val_acc: 0.5000
+Epoch 56/500
+Epoch 00055: val_acc did not improve
+115s - loss: 0.0916 - acc: 0.9750 - val_loss: 1.9862 - val_acc: 0.4750
+Epoch 57/500
+Epoch 00056: val_acc did not improve
+115s - loss: 0.0304 - acc: 1.0000 - val_loss: 2.3606 - val_acc: 0.5250
+Epoch 58/500
+Epoch 00057: val_acc did not improve
+115s - loss: 0.0073 - acc: 1.0000 - val_loss: 2.6328 - val_acc: 0.5500
+Epoch 59/500
+Epoch 00058: val_acc did not improve
+116s - loss: 0.0048 - acc: 1.0000 - val_loss: 2.7058 - val_acc: 0.5750
+Epoch 60/500
+Epoch 00059: val_acc did not improve
+116s - loss: 0.0034 - acc: 1.0000 - val_loss: 2.7395 - val_acc: 0.5750
+Epoch 61/500
+Epoch 00060: val_acc improved from 0.57500 to 0.60000, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2008/ds1a/model/little_wave/4000_2LSTM_true-adam_max_relu.h5
+116s - loss: 0.0027 - acc: 1.0000 - val_loss: 2.8146 - val_acc: 0.6000
+Epoch 62/500
+Epoch 00061: val_acc improved from 0.60000 to 0.62500, saving model to /media/kong/9A8821088820E48B/Xcat/experiment/BCI2008/ds1a/model/little_wave/4000_2LSTM_true-adam_max_relu.h5
+116s - loss: 0.0022 - acc: 1.0000 - val_loss: 2.8784 - val_acc: 0.6250
+Epoch 63/500
+Epoch 00062: val_acc did not improve
+115s - loss: 0.0018 - acc: 1.0000 - val_loss: 2.9317 - val_acc: 0.6000
+Epoch 64/500
+Epoch 00063: val_acc did not improve
+116s - loss: 0.0015 - acc: 1.0000 - val_loss: 3.0032 - val_acc: 0.6000
+Epoch 65/500
+Epoch 00064: val_acc did not improve
+115s - loss: 0.0013 - acc: 1.0000 - val_loss: 3.0485 - val_acc: 0.6000
+Epoch 66/500
+Epoch 00065: val_acc did not improve
+115s - loss: 0.0011 - acc: 1.0000 - val_loss: 3.1121 - val_acc: 0.6000
+Epoch 67/500
+Epoch 00066: val_acc did not improve
+115s - loss: 9.7304e-04 - acc: 1.0000 - val_loss: 3.1657 - val_acc: 0.6000
+Epoch 68/500
+Epoch 00067: val_acc did not improve
+115s - loss: 8.4362e-04 - acc: 1.0000 - val_loss: 3.2000 - val_acc: 0.6000
+Epoch 69/500
+Epoch 00068: val_acc did not improve
+115s - loss: 7.4261e-04 - acc: 1.0000 - val_loss: 3.2325 - val_acc: 0.6000
+Epoch 70/500
+Epoch 00069: val_acc did not improve
+115s - loss: 6.5106e-04 - acc: 1.0000 - val_loss: 3.3423 - val_acc: 0.6000
+Epoch 71/500
+Epoch 00070: val_acc did not improve
+116s - loss: 5.7081e-04 - acc: 1.0000 - val_loss: 3.2787 - val_acc: 0.6000
+Epoch 72/500
+Epoch 00071: val_acc did not improve
+114s - loss: 4.8801e-04 - acc: 1.0000 - val_loss: 3.3490 - val_acc: 0.6000
+Epoch 73/500
+Epoch 00072: val_acc did not improve
+115s - loss: 4.2396e-04 - acc: 1.0000 - val_loss: 3.4722 - val_acc: 0.6000
+Epoch 74/500
+Epoch 00073: val_acc did not improve
+115s - loss: 3.7910e-04 - acc: 1.0000 - val_loss: 3.5281 - val_acc: 0.5750
+Epoch 75/500
+Epoch 00074: val_acc did not improve
+115s - loss: 3.3275e-04 - acc: 1.0000 - val_loss: 3.4822 - val_acc: 0.6000
+Epoch 76/500
+Epoch 00075: val_acc did not improve
+115s - loss: 2.7861e-04 - acc: 1.0000 - val_loss: 3.4916 - val_acc: 0.6000
+Epoch 77/500
+Epoch 00076: val_acc did not improve
+114s - loss: 2.4489e-04 - acc: 1.0000 - val_loss: 3.5393 - val_acc: 0.6000
+Epoch 78/500
+Epoch 00077: val_acc did not improve
+115s - loss: 2.2085e-04 - acc: 1.0000 - val_loss: 3.5684 - val_acc: 0.5750
+Epoch 79/500
+Epoch 00078: val_acc did not improve
+115s - loss: 1.9702e-04 - acc: 1.0000 - val_loss: 3.5602 - val_acc: 0.6000
+Epoch 80/500
+Epoch 00079: val_acc did not improve
+115s - loss: 1.7268e-04 - acc: 1.0000 - val_loss: 3.5934 - val_acc: 0.5750
+Epoch 81/500
+Epoch 00080: val_acc did not improve
+115s - loss: 1.5560e-04 - acc: 1.0000 - val_loss: 3.6445 - val_acc: 0.5750
+Epoch 82/500
+Epoch 00081: val_acc did not improve
+115s - loss: 1.4170e-04 - acc: 1.0000 - val_loss: 3.6154 - val_acc: 0.5750
+Epoch 83/500
+Epoch 00082: val_acc did not improve
+115s - loss: 1.2695e-04 - acc: 1.0000 - val_loss: 3.6976 - val_acc: 0.5750
+Epoch 84/500
+Epoch 00083: val_acc did not improve
+115s - loss: 1.1631e-04 - acc: 1.0000 - val_loss: 3.6510 - val_acc: 0.5750
+Epoch 85/500
+Epoch 00084: val_acc did not improve
+115s - loss: 1.0283e-04 - acc: 1.0000 - val_loss: 3.6537 - val_acc: 0.5750
+Epoch 86/500
+Epoch 00085: val_acc did not improve
+115s - loss: 9.4509e-05 - acc: 1.0000 - val_loss: 3.6701 - val_acc: 0.5750
+Epoch 87/500
+Epoch 00086: val_acc did not improve
+115s - loss: 8.5637e-05 - acc: 1.0000 - val_loss: 3.6888 - val_acc: 0.5750
+Epoch 88/500
+Epoch 00087: val_acc did not improve
+115s - loss: 7.6744e-05 - acc: 1.0000 - val_loss: 3.7788 - val_acc: 0.5750
+Epoch 89/500
+Epoch 00088: val_acc did not improve
+115s - loss: 6.9076e-05 - acc: 1.0000 - val_loss: 3.7260 - val_acc: 0.5750
+Epoch 90/500
+Epoch 00089: val_acc did not improve
+115s - loss: 6.5229e-05 - acc: 1.0000 - val_loss: 3.7662 - val_acc: 0.5750
+Epoch 91/500
+Epoch 00090: val_acc did not improve
+115s - loss: 6.0201e-05 - acc: 1.0000 - val_loss: 3.7828 - val_acc: 0.5750
+Epoch 92/500
+Epoch 00091: val_acc did not improve
+116s - loss: 5.3828e-05 - acc: 1.0000 - val_loss: 3.8223 - val_acc: 0.5750
+Epoch 93/500
+Epoch 00092: val_acc did not improve
+115s - loss: 4.9176e-05 - acc: 1.0000 - val_loss: 3.8377 - val_acc: 0.5750
+Epoch 94/500
+Epoch 00093: val_acc did not improve
+114s - loss: 4.5830e-05 - acc: 1.0000 - val_loss: 3.8189 - val_acc: 0.5750
+Epoch 95/500
+Epoch 00094: val_acc did not improve
+115s - loss: 4.2203e-05 - acc: 1.0000 - val_loss: 3.8348 - val_acc: 0.5750
+Epoch 96/500
+Epoch 00095: val_acc did not improve
+115s - loss: 3.8130e-05 - acc: 1.0000 - val_loss: 3.9335 - val_acc: 0.5750
+Epoch 97/500
+Epoch 00096: val_acc did not improve
+115s - loss: 3.6140e-05 - acc: 1.0000 - val_loss: 3.8327 - val_acc: 0.5750
+Epoch 98/500
+Epoch 00097: val_acc did not improve
+114s - loss: 3.3082e-05 - acc: 1.0000 - val_loss: 3.9194 - val_acc: 0.5750
+Epoch 99/500
+Epoch 00098: val_acc did not improve
+115s - loss: 3.1086e-05 - acc: 1.0000 - val_loss: 3.9269 - val_acc: 0.5750
+Epoch 100/500
+Epoch 00099: val_acc did not improve
+115s - loss: 2.8260e-05 - acc: 1.0000 - val_loss: 3.9584 - val_acc: 0.5750
+Epoch 101/500
+Epoch 00100: val_acc did not improve
+115s - loss: 2.6332e-05 - acc: 1.0000 - val_loss: 3.9795 - val_acc: 0.5750
+Epoch 102/500
+Epoch 00101: val_acc did not improve
+115s - loss: 2.4297e-05 - acc: 1.0000 - val_loss: 3.9081 - val_acc: 0.5750
+Epoch 103/500
+Epoch 00102: val_acc did not improve
+115s - loss: 2.1982e-05 - acc: 1.0000 - val_loss: 4.0061 - val_acc: 0.5750
+Epoch 104/500
+Epoch 00103: val_acc did not improve
+115s - loss: 2.1007e-05 - acc: 1.0000 - val_loss: 3.9669 - val_acc: 0.5750
+Epoch 105/500
+Epoch 00104: val_acc did not improve
+114s - loss: 1.8950e-05 - acc: 1.0000 - val_loss: 4.0103 - val_acc: 0.5750
+Epoch 106/500
+Epoch 00105: val_acc did not improve
+114s - loss: 1.8089e-05 - acc: 1.0000 - val_loss: 3.9897 - val_acc: 0.5750
+Epoch 107/500
+Epoch 00106: val_acc did not improve
+114s - loss: 1.6783e-05 - acc: 1.0000 - val_loss: 3.9993 - val_acc: 0.5750
+Epoch 108/500
+Epoch 00107: val_acc did not improve
+114s - loss: 1.5450e-05 - acc: 1.0000 - val_loss: 4.0903 - val_acc: 0.5750
+Epoch 109/500
+Epoch 00108: val_acc did not improve
+114s - loss: 1.4271e-05 - acc: 1.0000 - val_loss: 4.0726 - val_acc: 0.5750
+Epoch 110/500
+Epoch 00109: val_acc did not improve
+114s - loss: 1.3366e-05 - acc: 1.0000 - val_loss: 4.0900 - val_acc: 0.5750
+Epoch 111/500
+Epoch 00110: val_acc did not improve
+115s - loss: 1.2424e-05 - acc: 1.0000 - val_loss: 4.0922 - val_acc: 0.5750
+Epoch 112/500
+Epoch 00111: val_acc did not improve
+114s - loss: 1.1281e-05 - acc: 1.0000 - val_loss: 4.0365 - val_acc: 0.6000
+Epoch 113/500
+Epoch 00112: val_acc did not improve
+114s - loss: 1.1117e-05 - acc: 1.0000 - val_loss: 4.1030 - val_acc: 0.5750
+Epoch 114/500
+Epoch 00113: val_acc did not improve
+114s - loss: 1.0069e-05 - acc: 1.0000 - val_loss: 4.0887 - val_acc: 0.6000
+Epoch 115/500
+Epoch 00114: val_acc did not improve
+115s - loss: 9.7197e-06 - acc: 1.0000 - val_loss: 4.0887 - val_acc: 0.6000
+Epoch 116/500
+Epoch 00115: val_acc did not improve
+115s - loss: 8.8360e-06 - acc: 1.0000 - val_loss: 4.1117 - val_acc: 0.5750
+Epoch 117/500
+Epoch 00116: val_acc did not improve
+114s - loss: 8.2429e-06 - acc: 1.0000 - val_loss: 4.1209 - val_acc: 0.5750
+Epoch 118/500
+Epoch 00117: val_acc did not improve
+115s - loss: 7.4776e-06 - acc: 1.0000 - val_loss: 4.2077 - val_acc: 0.5750
+Epoch 119/500
+Epoch 00118: val_acc did not improve
+115s - loss: 7.2213e-06 - acc: 1.0000 - val_loss: 4.1838 - val_acc: 0.5750
+Epoch 120/500
+Epoch 00119: val_acc did not improve
+115s - loss: 6.6298e-06 - acc: 1.0000 - val_loss: 4.1464 - val_acc: 0.6000
+Epoch 121/500
+Epoch 00120: val_acc did not improve
+115s - loss: 6.2266e-06 - acc: 1.0000 - val_loss: 4.1944 - val_acc: 0.5750
+Epoch 122/500
+Epoch 00121: val_acc did not improve
+115s - loss: 5.7081e-06 - acc: 1.0000 - val_loss: 4.2061 - val_acc: 0.6000
+Epoch 123/500
+Epoch 00122: val_acc did not improve
+115s - loss: 5.3987e-06 - acc: 1.0000 - val_loss: 4.1771 - val_acc: 0.6000
+Epoch 124/500
+Epoch 00123: val_acc did not improve
+114s - loss: 5.0866e-06 - acc: 1.0000 - val_loss: 4.2197 - val_acc: 0.5750
+Epoch 125/500
+Epoch 00124: val_acc did not improve
+115s - loss: 4.9062e-06 - acc: 1.0000 - val_loss: 4.2479 - val_acc: 0.5750
+Epoch 126/500
+Epoch 00125: val_acc did not improve
+115s - loss: 4.3481e-06 - acc: 1.0000 - val_loss: 4.2577 - val_acc: 0.5750
+Epoch 127/500
+Epoch 00126: val_acc did not improve
+114s - loss: 4.1388e-06 - acc: 1.0000 - val_loss: 4.2862 - val_acc: 0.5750
+Epoch 128/500
+Epoch 00127: val_acc did not improve
+114s - loss: 4.0970e-06 - acc: 1.0000 - val_loss: 4.1721 - val_acc: 0.5750
+Epoch 129/500
+Epoch 00128: val_acc did not improve
+115s - loss: 3.8161e-06 - acc: 1.0000 - val_loss: 4.2823 - val_acc: 0.5750
+Epoch 130/500
+Epoch 00129: val_acc did not improve
+114s - loss: 3.4831e-06 - acc: 1.0000 - val_loss: 4.2297 - val_acc: 0.6000
+Epoch 131/500
+Epoch 00130: val_acc did not improve
+115s - loss: 3.2520e-06 - acc: 1.0000 - val_loss: 4.2783 - val_acc: 0.5750
+Epoch 132/500
+Epoch 00131: val_acc did not improve
+115s - loss: 2.9964e-06 - acc: 1.0000 - val_loss: 4.2995 - val_acc: 0.6000
+Epoch 133/500
+Epoch 00132: val_acc did not improve
+115s - loss: 2.7796e-06 - acc: 1.0000 - val_loss: 4.2957 - val_acc: 0.6000
+Epoch 134/500
+Epoch 00133: val_acc did not improve
+115s - loss: 2.5985e-06 - acc: 1.0000 - val_loss: 4.3752 - val_acc: 0.5750
+Epoch 135/500
+Epoch 00134: val_acc did not improve
+114s - loss: 2.5054e-06 - acc: 1.0000 - val_loss: 4.3140 - val_acc: 0.6000
+Epoch 136/500
+Epoch 00135: val_acc did not improve
+115s - loss: 2.3601e-06 - acc: 1.0000 - val_loss: 4.3945 - val_acc: 0.5750
+Epoch 137/500
+Epoch 00136: val_acc did not improve
+114s - loss: 2.1752e-06 - acc: 1.0000 - val_loss: 4.3779 - val_acc: 0.5750
+Epoch 138/500
+Epoch 00137: val_acc did not improve
+115s - loss: 2.1513e-06 - acc: 1.0000 - val_loss: 4.3890 - val_acc: 0.6000
+Epoch 139/500
+Epoch 00138: val_acc did not improve
+115s - loss: 1.9115e-06 - acc: 1.0000 - val_loss: 4.4487 - val_acc: 0.5750
+Epoch 140/500
+Epoch 00139: val_acc did not improve
+114s - loss: 1.8935e-06 - acc: 1.0000 - val_loss: 4.4378 - val_acc: 0.5750
+Epoch 141/500
+Epoch 00140: val_acc did not improve
+115s - loss: 1.6312e-06 - acc: 1.0000 - val_loss: 4.4417 - val_acc: 0.6000
+Epoch 142/500
+Epoch 00141: val_acc did not improve
+114s - loss: 1.5477e-06 - acc: 1.0000 - val_loss: 4.4589 - val_acc: 0.5750
+Epoch 143/500
+Epoch 00142: val_acc did not improve
+114s - loss: 1.4373e-06 - acc: 1.0000 - val_loss: 4.5069 - val_acc: 0.5500
+Epoch 144/500
+Epoch 00143: val_acc did not improve
+114s - loss: 1.3800e-06 - acc: 1.0000 - val_loss: 4.5120 - val_acc: 0.5500
+Epoch 145/500
+Epoch 00144: val_acc did not improve
+115s - loss: 1.2556e-06 - acc: 1.0000 - val_loss: 4.5375 - val_acc: 0.5500
+Epoch 146/500
+Epoch 00145: val_acc did not improve
+114s - loss: 1.1997e-06 - acc: 1.0000 - val_loss: 4.4981 - val_acc: 0.5750
+Epoch 147/500
+Epoch 00146: val_acc did not improve
+114s - loss: 1.1498e-06 - acc: 1.0000 - val_loss: 4.5541 - val_acc: 0.5500
+Epoch 148/500
+Epoch 00147: val_acc did not improve
+114s - loss: 1.0640e-06 - acc: 1.0000 - val_loss: 4.5197 - val_acc: 0.5750
+Epoch 149/500
+Epoch 00148: val_acc did not improve
+114s - loss: 9.5369e-07 - acc: 1.0000 - val_loss: 4.5451 - val_acc: 0.5500
+Epoch 150/500
+Epoch 00149: val_acc did not improve
+115s - loss: 9.2239e-07 - acc: 1.0000 - val_loss: 4.5389 - val_acc: 0.5500
+Epoch 151/500
+Epoch 00150: val_acc did not improve
+115s - loss: 8.7322e-07 - acc: 1.0000 - val_loss: 4.5201 - val_acc: 0.5750
+Epoch 152/500
+Epoch 00151: val_acc did not improve
+115s - loss: 8.1285e-07 - acc: 1.0000 - val_loss: 4.5538 - val_acc: 0.5750
+Epoch 153/500
+Epoch 00152: val_acc did not improve
+114s - loss: 7.3823e-07 - acc: 1.0000 - val_loss: 4.5649 - val_acc: 0.5500
+Epoch 154/500
+Epoch 00153: val_acc did not improve
+114s - loss: 6.9575e-07 - acc: 1.0000 - val_loss: 4.5900 - val_acc: 0.5500
+Epoch 155/500
+Epoch 00154: val_acc did not improve
+114s - loss: 6.5474e-07 - acc: 1.0000 - val_loss: 4.5844 - val_acc: 0.5500
+Epoch 156/500
+Epoch 00155: val_acc did not improve
+114s - loss: 6.2871e-07 - acc: 1.0000 - val_loss: 4.5585 - val_acc: 0.5750
+Epoch 157/500
+Epoch 00156: val_acc did not improve
+115s - loss: 5.7943e-07 - acc: 1.0000 - val_loss: 4.6135 - val_acc: 0.5500
+Epoch 158/500
+Epoch 00157: val_acc did not improve
+115s - loss: 5.4294e-07 - acc: 1.0000 - val_loss: 4.6456 - val_acc: 0.5500
+Epoch 159/500
+Epoch 00158: val_acc did not improve
+114s - loss: 4.8843e-07 - acc: 1.0000 - val_loss: 4.6815 - val_acc: 0.5500
+Epoch 160/500
+Epoch 00159: val_acc did not improve
+115s - loss: 4.6983e-07 - acc: 1.0000 - val_loss: 4.7195 - val_acc: 0.5500
+Epoch 161/500
+Epoch 00160: val_acc did not improve
+115s - loss: 4.2957e-07 - acc: 1.0000 - val_loss: 4.6779 - val_acc: 0.5500
+Epoch 162/500
+Epoch 00161: val_acc did not improve
+114s - loss: 5.0188e-07 - acc: 1.0000 - val_loss: 4.6314 - val_acc: 0.5500
+Epoch 163/500
+Epoch 00162: val_acc did not improve
+115s - loss: 1.7271e-06 - acc: 1.0000 - val_loss: 4.7046 - val_acc: 0.5500
+Epoch 164/500
+Epoch 00163: val_acc did not improve
+114s - loss: 2.6228e-06 - acc: 1.0000 - val_loss: 4.4643 - val_acc: 0.5750
+Epoch 165/500
+Epoch 00164: val_acc did not improve
+115s - loss: 1.1183e-06 - acc: 1.0000 - val_loss: 4.6546 - val_acc: 0.5750
+Epoch 166/500
+Epoch 00165: val_acc did not improve
+116s - loss: 7.5829e-07 - acc: 1.0000 - val_loss: 4.6258 - val_acc: 0.5750
+Epoch 167/500
+Epoch 00166: val_acc did not improve
+115s - loss: 5.8837e-07 - acc: 1.0000 - val_loss: 4.6303 - val_acc: 0.5500
+Epoch 168/500
+Epoch 00167: val_acc did not improve
+116s - loss: 4.7427e-07 - acc: 1.0000 - val_loss: 4.7176 - val_acc: 0.5500
+Epoch 169/500
+Epoch 00168: val_acc did not improve
+114s - loss: 4.1617e-07 - acc: 1.0000 - val_loss: 4.6518 - val_acc: 0.5500
+Epoch 170/500
+Epoch 00169: val_acc did not improve
+115s - loss: 3.5123e-07 - acc: 1.0000 - val_loss: 4.7654 - val_acc: 0.5500
+Epoch 171/500
+Epoch 00170: val_acc did not improve
+114s - loss: 3.4379e-07 - acc: 1.0000 - val_loss: 4.7717 - val_acc: 0.5500
+Epoch 172/500
+Epoch 00171: val_acc did not improve
+114s - loss: 2.9382e-07 - acc: 1.0000 - val_loss: 4.7500 - val_acc: 0.5500
+Epoch 173/500
+Epoch 00172: val_acc did not improve
+115s - loss: 2.5501e-07 - acc: 1.0000 - val_loss: 4.7928 - val_acc: 0.5500
+Epoch 174/500
+Epoch 00173: val_acc did not improve
+115s - loss: 2.4078e-07 - acc: 1.0000 - val_loss: 4.7387 - val_acc: 0.5500
+Epoch 175/500
+Epoch 00174: val_acc did not improve
+115s - loss: 2.2589e-07 - acc: 1.0000 - val_loss: 4.8021 - val_acc: 0.5500
+Epoch 176/500
+Epoch 00175: val_acc did not improve
+115s - loss: 2.0647e-07 - acc: 1.0000 - val_loss: 4.8032 - val_acc: 0.5500
+Epoch 177/500
+Epoch 00176: val_acc did not improve
+115s - loss: 1.9152e-07 - acc: 1.0000 - val_loss: 4.7998 - val_acc: 0.5500
+Epoch 178/500
+Epoch 00177: val_acc did not improve
+115s - loss: 1.7890e-07 - acc: 1.0000 - val_loss: 4.7980 - val_acc: 0.5500
+Epoch 179/500
+Epoch 00178: val_acc did not improve
+116s - loss: 1.7069e-07 - acc: 1.0000 - val_loss: 4.8327 - val_acc: 0.5250
+Epoch 180/500
+Epoch 00179: val_acc did not improve
+115s - loss: 1.5649e-07 - acc: 1.0000 - val_loss: 4.8427 - val_acc: 0.5250
+Epoch 181/500
+Epoch 00180: val_acc did not improve
+115s - loss: 1.4452e-07 - acc: 1.0000 - val_loss: 4.8830 - val_acc: 0.5250
+Epoch 182/500
+Epoch 00181: val_acc did not improve
+115s - loss: 1.3782e-07 - acc: 1.0000 - val_loss: 4.8717 - val_acc: 0.5250
+Epoch 183/500
+Epoch 00182: val_acc did not improve
+114s - loss: 1.3334e-07 - acc: 1.0000 - val_loss: 4.8725 - val_acc: 0.5500
+Epoch 184/500
+Epoch 00183: val_acc did not improve
+115s - loss: 1.2586e-07 - acc: 1.0000 - val_loss: 4.8586 - val_acc: 0.5250
+Epoch 185/500
+Epoch 00184: val_acc did not improve
+115s - loss: 1.2134e-07 - acc: 1.0000 - val_loss: 4.9085 - val_acc: 0.5250
+Epoch 186/500
+Epoch 00185: val_acc did not improve
+116s - loss: 1.1912e-07 - acc: 1.0000 - val_loss: 4.9014 - val_acc: 0.5250
+Epoch 187/500
+Epoch 00186: val_acc did not improve
+114s - loss: 1.1239e-07 - acc: 1.0000 - val_loss: 4.8732 - val_acc: 0.5250
+Epoch 188/500
+Epoch 00187: val_acc did not improve
+115s - loss: 1.0345e-07 - acc: 1.0000 - val_loss: 4.8989 - val_acc: 0.5250
+Epoch 189/500
+Epoch 00188: val_acc did not improve
+115s - loss: 1.0494e-07 - acc: 1.0000 - val_loss: 4.9144 - val_acc: 0.5250
+Epoch 190/500
+Epoch 00189: val_acc did not improve
+115s - loss: 9.5954e-08 - acc: 1.0000 - val_loss: 4.9012 - val_acc: 0.5250
+Epoch 191/500
+Epoch 00190: val_acc did not improve
+115s - loss: 9.6723e-08 - acc: 1.0000 - val_loss: 4.8868 - val_acc: 0.5250
+Epoch 192/500
+Epoch 00191: val_acc did not improve
+115s - loss: 9.3725e-08 - acc: 1.0000 - val_loss: 4.9201 - val_acc: 0.5250
+Epoch 193/500
+Epoch 00192: val_acc did not improve
+115s - loss: 8.9982e-08 - acc: 1.0000 - val_loss: 4.9374 - val_acc: 0.5250
+Epoch 194/500
+Epoch 00193: val_acc did not improve
+115s - loss: 8.9988e-08 - acc: 1.0000 - val_loss: 4.9223 - val_acc: 0.5000
+Epoch 195/500
+Epoch 00194: val_acc did not improve
+114s - loss: 8.4010e-08 - acc: 1.0000 - val_loss: 4.9479 - val_acc: 0.5000
+Epoch 196/500
+Epoch 00195: val_acc did not improve
+115s - loss: 8.5489e-08 - acc: 1.0000 - val_loss: 4.9481 - val_acc: 0.5000
+Epoch 197/500
+Epoch 00196: val_acc did not improve
+115s - loss: 8.6979e-08 - acc: 1.0000 - val_loss: 4.9132 - val_acc: 0.4750
+Epoch 198/500
+Epoch 00197: val_acc did not improve
+115s - loss: 7.8009e-08 - acc: 1.0000 - val_loss: 4.9119 - val_acc: 0.4750
+Epoch 199/500
+Epoch 00198: val_acc did not improve
+115s - loss: 7.6519e-08 - acc: 1.0000 - val_loss: 4.9403 - val_acc: 0.4750
+Epoch 200/500
+Epoch 00199: val_acc did not improve
+115s - loss: 7.5017e-08 - acc: 1.0000 - val_loss: 4.9260 - val_acc: 0.4750
+Epoch 201/500
+Epoch 00200: val_acc did not improve
+114s - loss: 7.5768e-08 - acc: 1.0000 - val_loss: 4.9755 - val_acc: 0.5000
+Epoch 202/500
+Epoch 00201: val_acc did not improve
+114s - loss: 7.5774e-08 - acc: 1.0000 - val_loss: 4.9286 - val_acc: 0.4750
+Epoch 203/500
+Epoch 00202: val_acc did not improve
+115s - loss: 7.7264e-08 - acc: 1.0000 - val_loss: 4.9716 - val_acc: 0.4750
+Epoch 204/500
+Epoch 00203: val_acc did not improve
+115s - loss: 7.5023e-08 - acc: 1.0000 - val_loss: 5.0201 - val_acc: 0.4750
+Epoch 205/500
+Epoch 00204: val_acc did not improve
+114s - loss: 7.2770e-08 - acc: 1.0000 - val_loss: 4.9682 - val_acc: 0.4750
+Epoch 206/500
+Epoch 00205: val_acc did not improve
+115s - loss: 7.1280e-08 - acc: 1.0000 - val_loss: 4.9858 - val_acc: 0.4750
+Epoch 207/500
+Epoch 00206: val_acc did not improve
+115s - loss: 7.1280e-08 - acc: 1.0000 - val_loss: 4.9862 - val_acc: 0.4750
+Epoch 208/500
+Epoch 00207: val_acc did not improve
+115s - loss: 7.0523e-08 - acc: 1.0000 - val_loss: 4.9986 - val_acc: 0.4750
+Epoch 209/500
+Epoch 00208: val_acc did not improve
+115s - loss: 7.0523e-08 - acc: 1.0000 - val_loss: 4.9677 - val_acc: 0.4750
+Epoch 210/500
+Epoch 00209: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 4.9657 - val_acc: 0.4750
+Epoch 211/500
+Epoch 00210: val_acc did not improve
+114s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 5.0330 - val_acc: 0.4750
+Epoch 212/500
+Epoch 00211: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 4.9644 - val_acc: 0.4750
+Epoch 213/500
+Epoch 00212: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 4.9899 - val_acc: 0.4750
+Epoch 214/500
+Epoch 00213: val_acc did not improve
+115s - loss: 6.9027e-08 - acc: 1.0000 - val_loss: 4.9686 - val_acc: 0.4750
+Epoch 215/500
+Epoch 00214: val_acc did not improve
+114s - loss: 7.1280e-08 - acc: 1.0000 - val_loss: 4.9854 - val_acc: 0.4750
+Epoch 216/500
+Epoch 00215: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 5.0010 - val_acc: 0.4750
+Epoch 217/500
+Epoch 00216: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0227 - val_acc: 0.4750
+Epoch 218/500
+Epoch 00217: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0087 - val_acc: 0.4750
+Epoch 219/500
+Epoch 00218: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 4.9950 - val_acc: 0.4750
+Epoch 220/500
+Epoch 00219: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 4.9893 - val_acc: 0.4750
+Epoch 221/500
+Epoch 00220: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0170 - val_acc: 0.4750
+Epoch 222/500
+Epoch 00221: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 4.9871 - val_acc: 0.4750
+Epoch 223/500
+Epoch 00222: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0003 - val_acc: 0.4750
+Epoch 224/500
+Epoch 00223: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0134 - val_acc: 0.4750
+Epoch 225/500
+Epoch 00224: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0413 - val_acc: 0.4750
+Epoch 226/500
+Epoch 00225: val_acc did not improve
+114s - loss: 7.2776e-08 - acc: 1.0000 - val_loss: 5.0030 - val_acc: 0.4750
+Epoch 227/500
+Epoch 00226: val_acc did not improve
+114s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 4.9690 - val_acc: 0.4750
+Epoch 228/500
+Epoch 00227: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 4.9559 - val_acc: 0.4750
+Epoch 229/500
+Epoch 00228: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0311 - val_acc: 0.4750
+Epoch 230/500
+Epoch 00229: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 5.0516 - val_acc: 0.4750
+Epoch 231/500
+Epoch 00230: val_acc did not improve
+114s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 5.1102 - val_acc: 0.5000
+Epoch 232/500
+Epoch 00231: val_acc did not improve
+115s - loss: 0.5393 - acc: 0.9000 - val_loss: 1.9570 - val_acc: 0.4750
+Epoch 233/500
+Epoch 00232: val_acc did not improve
+115s - loss: 0.2339 - acc: 0.9125 - val_loss: 2.2640 - val_acc: 0.4750
+Epoch 234/500
+Epoch 00233: val_acc did not improve
+115s - loss: 0.0529 - acc: 0.9875 - val_loss: 2.7123 - val_acc: 0.5250
+Epoch 235/500
+Epoch 00234: val_acc did not improve
+115s - loss: 0.0634 - acc: 0.9750 - val_loss: 3.1546 - val_acc: 0.5000
+Epoch 236/500
+Epoch 00235: val_acc did not improve
+114s - loss: 0.0088 - acc: 1.0000 - val_loss: 3.2345 - val_acc: 0.4500
+Epoch 237/500
+Epoch 00236: val_acc did not improve
+115s - loss: 0.0033 - acc: 1.0000 - val_loss: 3.2892 - val_acc: 0.4250
+Epoch 238/500
+Epoch 00237: val_acc did not improve
+115s - loss: 0.0024 - acc: 1.0000 - val_loss: 3.5910 - val_acc: 0.4250
+Epoch 239/500
+Epoch 00238: val_acc did not improve
+114s - loss: 0.0016 - acc: 1.0000 - val_loss: 3.6511 - val_acc: 0.4500
+Epoch 240/500
+Epoch 00239: val_acc did not improve
+114s - loss: 0.0012 - acc: 1.0000 - val_loss: 3.7711 - val_acc: 0.4500
+Epoch 241/500
+Epoch 00240: val_acc did not improve
+115s - loss: 9.2158e-04 - acc: 1.0000 - val_loss: 3.8300 - val_acc: 0.4500
+Epoch 242/500
+Epoch 00241: val_acc did not improve
+115s - loss: 7.3456e-04 - acc: 1.0000 - val_loss: 3.9110 - val_acc: 0.4500
+Epoch 243/500
+Epoch 00242: val_acc did not improve
+115s - loss: 5.8326e-04 - acc: 1.0000 - val_loss: 3.9594 - val_acc: 0.4500
+Epoch 244/500
+Epoch 00243: val_acc did not improve
+115s - loss: 4.9576e-04 - acc: 1.0000 - val_loss: 4.0220 - val_acc: 0.4500
+Epoch 245/500
+Epoch 00244: val_acc did not improve
+115s - loss: 4.3157e-04 - acc: 1.0000 - val_loss: 4.0486 - val_acc: 0.4500
+Epoch 246/500
+Epoch 00245: val_acc did not improve
+114s - loss: 3.4397e-04 - acc: 1.0000 - val_loss: 4.0961 - val_acc: 0.4500
+Epoch 247/500
+Epoch 00246: val_acc did not improve
+115s - loss: 2.8428e-04 - acc: 1.0000 - val_loss: 4.1624 - val_acc: 0.4250
+Epoch 248/500
+Epoch 00247: val_acc did not improve
+115s - loss: 2.4422e-04 - acc: 1.0000 - val_loss: 4.1937 - val_acc: 0.4250
+Epoch 249/500
+Epoch 00248: val_acc did not improve
+115s - loss: 2.1303e-04 - acc: 1.0000 - val_loss: 4.2336 - val_acc: 0.4250
+Epoch 250/500
+Epoch 00249: val_acc did not improve
+115s - loss: 1.8367e-04 - acc: 1.0000 - val_loss: 4.2809 - val_acc: 0.4250
+Epoch 251/500
+Epoch 00250: val_acc did not improve
+115s - loss: 1.6544e-04 - acc: 1.0000 - val_loss: 4.3170 - val_acc: 0.4250
+Epoch 252/500
+Epoch 00251: val_acc did not improve
+115s - loss: 1.5070e-04 - acc: 1.0000 - val_loss: 4.3262 - val_acc: 0.4500
+Epoch 253/500
+Epoch 00252: val_acc did not improve
+114s - loss: 1.2980e-04 - acc: 1.0000 - val_loss: 4.3677 - val_acc: 0.4250
+Epoch 254/500
+Epoch 00253: val_acc did not improve
+114s - loss: 1.0789e-04 - acc: 1.0000 - val_loss: 4.4380 - val_acc: 0.4250
+Epoch 255/500
+Epoch 00254: val_acc did not improve
+114s - loss: 9.4326e-05 - acc: 1.0000 - val_loss: 4.4861 - val_acc: 0.4250
+Epoch 256/500
+Epoch 00255: val_acc did not improve
+115s - loss: 8.6034e-05 - acc: 1.0000 - val_loss: 4.4990 - val_acc: 0.4250
+Epoch 257/500
+Epoch 00256: val_acc did not improve
+115s - loss: 6.6942e-05 - acc: 1.0000 - val_loss: 4.5778 - val_acc: 0.4250
+Epoch 258/500
+Epoch 00257: val_acc did not improve
+114s - loss: 5.0624e-05 - acc: 1.0000 - val_loss: 4.6567 - val_acc: 0.4250
+Epoch 259/500
+Epoch 00258: val_acc did not improve
+115s - loss: 4.2029e-05 - acc: 1.0000 - val_loss: 4.6961 - val_acc: 0.4250
+Epoch 260/500
+Epoch 00259: val_acc did not improve
+115s - loss: 3.3434e-05 - acc: 1.0000 - val_loss: 4.7394 - val_acc: 0.4250
+Epoch 261/500
+Epoch 00260: val_acc did not improve
+114s - loss: 2.5794e-05 - acc: 1.0000 - val_loss: 4.8138 - val_acc: 0.4250
+Epoch 262/500
+Epoch 00261: val_acc did not improve
+114s - loss: 2.2752e-05 - acc: 1.0000 - val_loss: 4.8429 - val_acc: 0.4250
+Epoch 263/500
+Epoch 00262: val_acc did not improve
+114s - loss: 1.8359e-05 - acc: 1.0000 - val_loss: 4.8989 - val_acc: 0.4250
+Epoch 264/500
+Epoch 00263: val_acc did not improve
+115s - loss: 1.6935e-05 - acc: 1.0000 - val_loss: 4.9196 - val_acc: 0.4250
+Epoch 265/500
+Epoch 00264: val_acc did not improve
+114s - loss: 1.3338e-05 - acc: 1.0000 - val_loss: 4.9877 - val_acc: 0.4250
+Epoch 266/500
+Epoch 00265: val_acc did not improve
+115s - loss: 1.0623e-05 - acc: 1.0000 - val_loss: 5.0313 - val_acc: 0.4000
+Epoch 267/500
+Epoch 00266: val_acc did not improve
+114s - loss: 9.6251e-06 - acc: 1.0000 - val_loss: 5.0818 - val_acc: 0.4000
+Epoch 268/500
+Epoch 00267: val_acc did not improve
+114s - loss: 7.9789e-06 - acc: 1.0000 - val_loss: 5.1070 - val_acc: 0.4000
+Epoch 269/500
+Epoch 00268: val_acc did not improve
+114s - loss: 6.8331e-06 - acc: 1.0000 - val_loss: 5.1296 - val_acc: 0.4000
+Epoch 270/500
+Epoch 00269: val_acc did not improve
+114s - loss: 5.8428e-06 - acc: 1.0000 - val_loss: 5.1784 - val_acc: 0.4250
+Epoch 271/500
+Epoch 00270: val_acc did not improve
+115s - loss: 5.9219e-06 - acc: 1.0000 - val_loss: 5.1373 - val_acc: 0.4000
+Epoch 272/500
+Epoch 00271: val_acc did not improve
+115s - loss: 4.9129e-06 - acc: 1.0000 - val_loss: 5.2102 - val_acc: 0.4000
+Epoch 273/500
+Epoch 00272: val_acc did not improve
+115s - loss: 4.3489e-06 - acc: 1.0000 - val_loss: 5.1879 - val_acc: 0.4000
+Epoch 274/500
+Epoch 00273: val_acc did not improve
+115s - loss: 4.0008e-06 - acc: 1.0000 - val_loss: 5.2178 - val_acc: 0.4000
+Epoch 275/500
+Epoch 00274: val_acc did not improve
+114s - loss: 3.5068e-06 - acc: 1.0000 - val_loss: 5.2614 - val_acc: 0.4000
+Epoch 276/500
+Epoch 00275: val_acc did not improve
+115s - loss: 3.1222e-06 - acc: 1.0000 - val_loss: 5.2879 - val_acc: 0.4000
+Epoch 277/500
+Epoch 00276: val_acc did not improve
+114s - loss: 2.8480e-06 - acc: 1.0000 - val_loss: 5.3294 - val_acc: 0.4250
+Epoch 278/500
+Epoch 00277: val_acc did not improve
+115s - loss: 2.4820e-06 - acc: 1.0000 - val_loss: 5.3356 - val_acc: 0.4000
+Epoch 279/500
+Epoch 00278: val_acc did not improve
+115s - loss: 3.6094e-06 - acc: 1.0000 - val_loss: 5.3262 - val_acc: 0.4000
+Epoch 280/500
+Epoch 00279: val_acc did not improve
+115s - loss: 3.0976e-06 - acc: 1.0000 - val_loss: 5.3433 - val_acc: 0.4000
+Epoch 281/500
+Epoch 00280: val_acc did not improve
+115s - loss: 2.2712e-06 - acc: 1.0000 - val_loss: 5.3294 - val_acc: 0.4250
+Epoch 282/500
+Epoch 00281: val_acc did not improve
+114s - loss: 2.0371e-06 - acc: 1.0000 - val_loss: 5.2956 - val_acc: 0.4250
+Epoch 283/500
+Epoch 00282: val_acc did not improve
+114s - loss: 1.6631e-06 - acc: 1.0000 - val_loss: 5.3791 - val_acc: 0.4000
+Epoch 284/500
+Epoch 00283: val_acc did not improve
+115s - loss: 1.4239e-06 - acc: 1.0000 - val_loss: 5.3696 - val_acc: 0.4250
+Epoch 285/500
+Epoch 00284: val_acc did not improve
+115s - loss: 1.2844e-06 - acc: 1.0000 - val_loss: 5.3881 - val_acc: 0.4000
+Epoch 286/500
+Epoch 00285: val_acc did not improve
+115s - loss: 1.1444e-06 - acc: 1.0000 - val_loss: 5.4217 - val_acc: 0.4250
+Epoch 287/500
+Epoch 00286: val_acc did not improve
+115s - loss: 1.0511e-06 - acc: 1.0000 - val_loss: 5.4037 - val_acc: 0.4250
+Epoch 288/500
+Epoch 00287: val_acc did not improve
+115s - loss: 9.4168e-07 - acc: 1.0000 - val_loss: 5.4586 - val_acc: 0.4250
+Epoch 289/500
+Epoch 00288: val_acc did not improve
+115s - loss: 8.8641e-07 - acc: 1.0000 - val_loss: 5.4327 - val_acc: 0.4250
+Epoch 290/500
+Epoch 00289: val_acc did not improve
+114s - loss: 7.9101e-07 - acc: 1.0000 - val_loss: 5.4622 - val_acc: 0.4250
+Epoch 291/500
+Epoch 00290: val_acc did not improve
+114s - loss: 7.3962e-07 - acc: 1.0000 - val_loss: 5.4997 - val_acc: 0.4250
+Epoch 292/500
+Epoch 00291: val_acc did not improve
+114s - loss: 7.0086e-07 - acc: 1.0000 - val_loss: 5.4320 - val_acc: 0.4250
+Epoch 293/500
+Epoch 00292: val_acc did not improve
+115s - loss: 6.4048e-07 - acc: 1.0000 - val_loss: 5.5135 - val_acc: 0.4250
+Epoch 294/500
+Epoch 00293: val_acc did not improve
+114s - loss: 5.7259e-07 - acc: 1.0000 - val_loss: 5.4917 - val_acc: 0.4250
+Epoch 295/500
+Epoch 00294: val_acc did not improve
+115s - loss: 5.5698e-07 - acc: 1.0000 - val_loss: 5.5483 - val_acc: 0.4250
+Epoch 296/500
+Epoch 00295: val_acc did not improve
+115s - loss: 5.0176e-07 - acc: 1.0000 - val_loss: 5.5340 - val_acc: 0.4250
+Epoch 297/500
+Epoch 00296: val_acc did not improve
+115s - loss: 4.9135e-07 - acc: 1.0000 - val_loss: 5.5997 - val_acc: 0.4250
+Epoch 298/500
+Epoch 00297: val_acc did not improve
+115s - loss: 4.5929e-07 - acc: 1.0000 - val_loss: 5.5850 - val_acc: 0.4250
+Epoch 299/500
+Epoch 00298: val_acc did not improve
+115s - loss: 4.1608e-07 - acc: 1.0000 - val_loss: 5.5966 - val_acc: 0.4250
+Epoch 300/500
+Epoch 00299: val_acc did not improve
+114s - loss: 3.7660e-07 - acc: 1.0000 - val_loss: 5.6051 - val_acc: 0.4250
+Epoch 301/500
+Epoch 00300: val_acc did not improve
+115s - loss: 3.5490e-07 - acc: 1.0000 - val_loss: 5.6528 - val_acc: 0.4250
+Epoch 302/500
+Epoch 00301: val_acc did not improve
+116s - loss: 3.2653e-07 - acc: 1.0000 - val_loss: 5.6394 - val_acc: 0.4250
+Epoch 303/500
+Epoch 00302: val_acc did not improve
+115s - loss: 3.1684e-07 - acc: 1.0000 - val_loss: 5.6589 - val_acc: 0.4250
+Epoch 304/500
+Epoch 00303: val_acc did not improve
+115s - loss: 3.0868e-07 - acc: 1.0000 - val_loss: 5.6845 - val_acc: 0.4250
+Epoch 305/500
+Epoch 00304: val_acc did not improve
+115s - loss: 2.8181e-07 - acc: 1.0000 - val_loss: 5.6719 - val_acc: 0.4250
+Epoch 306/500
+Epoch 00305: val_acc did not improve
+114s - loss: 2.5573e-07 - acc: 1.0000 - val_loss: 5.6939 - val_acc: 0.4250
+Epoch 307/500
+Epoch 00306: val_acc did not improve
+114s - loss: 2.3930e-07 - acc: 1.0000 - val_loss: 5.6657 - val_acc: 0.4250
+Epoch 308/500
+Epoch 00307: val_acc did not improve
+114s - loss: 2.2434e-07 - acc: 1.0000 - val_loss: 5.6902 - val_acc: 0.4250
+Epoch 309/500
+Epoch 00308: val_acc did not improve
+114s - loss: 2.1696e-07 - acc: 1.0000 - val_loss: 5.6950 - val_acc: 0.4250
+Epoch 310/500
+Epoch 00309: val_acc did not improve
+115s - loss: 1.9977e-07 - acc: 1.0000 - val_loss: 5.7175 - val_acc: 0.4250
+Epoch 311/500
+Epoch 00310: val_acc did not improve
+115s - loss: 1.8859e-07 - acc: 1.0000 - val_loss: 5.6998 - val_acc: 0.4250
+Epoch 312/500
+Epoch 00311: val_acc did not improve
+114s - loss: 1.8855e-07 - acc: 1.0000 - val_loss: 5.7282 - val_acc: 0.4250
+Epoch 313/500
+Epoch 00312: val_acc did not improve
+115s - loss: 1.7138e-07 - acc: 1.0000 - val_loss: 5.7282 - val_acc: 0.4250
+Epoch 314/500
+Epoch 00313: val_acc did not improve
+115s - loss: 1.6020e-07 - acc: 1.0000 - val_loss: 5.7579 - val_acc: 0.4000
+Epoch 315/500
+Epoch 00314: val_acc did not improve
+114s - loss: 1.5498e-07 - acc: 1.0000 - val_loss: 5.7655 - val_acc: 0.4000
+Epoch 316/500
+Epoch 00315: val_acc did not improve
+115s - loss: 1.4377e-07 - acc: 1.0000 - val_loss: 5.7342 - val_acc: 0.4000
+Epoch 317/500
+Epoch 00316: val_acc did not improve
+115s - loss: 1.4600e-07 - acc: 1.0000 - val_loss: 5.8134 - val_acc: 0.4000
+Epoch 318/500
+Epoch 00317: val_acc did not improve
+114s - loss: 1.4076e-07 - acc: 1.0000 - val_loss: 5.8453 - val_acc: 0.4250
+Epoch 319/500
+Epoch 00318: val_acc did not improve
+115s - loss: 1.3332e-07 - acc: 1.0000 - val_loss: 5.8656 - val_acc: 0.4250
+Epoch 320/500
+Epoch 00319: val_acc did not improve
+116s - loss: 1.3555e-07 - acc: 1.0000 - val_loss: 5.8599 - val_acc: 0.4250
+Epoch 321/500
+Epoch 00320: val_acc did not improve
+114s - loss: 1.2511e-07 - acc: 1.0000 - val_loss: 5.7858 - val_acc: 0.4000
+Epoch 322/500
+Epoch 00321: val_acc did not improve
+115s - loss: 1.1910e-07 - acc: 1.0000 - val_loss: 5.8676 - val_acc: 0.4000
+Epoch 323/500
+Epoch 00322: val_acc did not improve
+115s - loss: 1.1239e-07 - acc: 1.0000 - val_loss: 5.8125 - val_acc: 0.4000
+Epoch 324/500
+Epoch 00323: val_acc did not improve
+115s - loss: 1.1613e-07 - acc: 1.0000 - val_loss: 5.8733 - val_acc: 0.4000
+Epoch 325/500
+Epoch 00324: val_acc did not improve
+115s - loss: 1.1165e-07 - acc: 1.0000 - val_loss: 5.8633 - val_acc: 0.4000
+Epoch 326/500
+Epoch 00325: val_acc did not improve
+114s - loss: 1.0568e-07 - acc: 1.0000 - val_loss: 5.8469 - val_acc: 0.4000
+Epoch 327/500
+Epoch 00326: val_acc did not improve
+114s - loss: 9.9691e-08 - acc: 1.0000 - val_loss: 5.8943 - val_acc: 0.4000
+Epoch 328/500
+Epoch 00327: val_acc did not improve
+114s - loss: 9.7439e-08 - acc: 1.0000 - val_loss: 5.9050 - val_acc: 0.4000
+Epoch 329/500
+Epoch 00328: val_acc did not improve
+114s - loss: 9.4464e-08 - acc: 1.0000 - val_loss: 5.8961 - val_acc: 0.4000
+Epoch 330/500
+Epoch 00329: val_acc did not improve
+115s - loss: 9.0716e-08 - acc: 1.0000 - val_loss: 5.8971 - val_acc: 0.4000
+Epoch 331/500
+Epoch 00330: val_acc did not improve
+115s - loss: 8.9982e-08 - acc: 1.0000 - val_loss: 5.9386 - val_acc: 0.4000
+Epoch 332/500
+Epoch 00331: val_acc did not improve
+115s - loss: 8.6985e-08 - acc: 1.0000 - val_loss: 5.9296 - val_acc: 0.4000
+Epoch 333/500
+Epoch 00332: val_acc did not improve
+114s - loss: 8.3987e-08 - acc: 1.0000 - val_loss: 5.9159 - val_acc: 0.4000
+Epoch 334/500
+Epoch 00333: val_acc did not improve
+115s - loss: 8.1734e-08 - acc: 1.0000 - val_loss: 5.9739 - val_acc: 0.4000
+Epoch 335/500
+Epoch 00334: val_acc did not improve
+114s - loss: 8.3242e-08 - acc: 1.0000 - val_loss: 5.9776 - val_acc: 0.4000
+Epoch 336/500
+Epoch 00335: val_acc did not improve
+115s - loss: 8.0995e-08 - acc: 1.0000 - val_loss: 5.9906 - val_acc: 0.4000
+Epoch 337/500
+Epoch 00336: val_acc did not improve
+115s - loss: 7.9505e-08 - acc: 1.0000 - val_loss: 5.9459 - val_acc: 0.4000
+Epoch 338/500
+Epoch 00337: val_acc did not improve
+116s - loss: 7.8020e-08 - acc: 1.0000 - val_loss: 6.0030 - val_acc: 0.4000
+Epoch 339/500
+Epoch 00338: val_acc did not improve
+114s - loss: 8.0232e-08 - acc: 1.0000 - val_loss: 6.0297 - val_acc: 0.4000
+Epoch 340/500
+Epoch 00339: val_acc did not improve
+114s - loss: 7.6519e-08 - acc: 1.0000 - val_loss: 6.0453 - val_acc: 0.4000
+Epoch 341/500
+Epoch 00340: val_acc did not improve
+114s - loss: 7.8015e-08 - acc: 1.0000 - val_loss: 6.0492 - val_acc: 0.4000
+Epoch 342/500
+Epoch 00341: val_acc did not improve
+114s - loss: 7.4272e-08 - acc: 1.0000 - val_loss: 6.0181 - val_acc: 0.4000
+Epoch 343/500
+Epoch 00342: val_acc did not improve
+115s - loss: 7.3521e-08 - acc: 1.0000 - val_loss: 6.0169 - val_acc: 0.4000
+Epoch 344/500
+Epoch 00343: val_acc did not improve
+115s - loss: 7.2770e-08 - acc: 1.0000 - val_loss: 6.0444 - val_acc: 0.4000
+Epoch 345/500
+Epoch 00344: val_acc did not improve
+114s - loss: 7.3521e-08 - acc: 1.0000 - val_loss: 6.0491 - val_acc: 0.4000
+Epoch 346/500
+Epoch 00345: val_acc did not improve
+115s - loss: 7.2025e-08 - acc: 1.0000 - val_loss: 6.0256 - val_acc: 0.4000
+Epoch 347/500
+Epoch 00346: val_acc did not improve
+114s - loss: 7.2770e-08 - acc: 1.0000 - val_loss: 6.0376 - val_acc: 0.4000
+Epoch 348/500
+Epoch 00347: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 6.0449 - val_acc: 0.3750
+Epoch 349/500
+Epoch 00348: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 6.0636 - val_acc: 0.3750
+Epoch 350/500
+Epoch 00349: val_acc did not improve
+116s - loss: 7.0529e-08 - acc: 1.0000 - val_loss: 6.0414 - val_acc: 0.3750
+Epoch 351/500
+Epoch 00350: val_acc did not improve
+115s - loss: 7.0529e-08 - acc: 1.0000 - val_loss: 6.0704 - val_acc: 0.4000
+Epoch 352/500
+Epoch 00351: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 6.0183 - val_acc: 0.4000
+Epoch 353/500
+Epoch 00352: val_acc did not improve
+115s - loss: 6.9027e-08 - acc: 1.0000 - val_loss: 6.1086 - val_acc: 0.3750
+Epoch 354/500
+Epoch 00353: val_acc did not improve
+115s - loss: 6.9027e-08 - acc: 1.0000 - val_loss: 6.0837 - val_acc: 0.3750
+Epoch 355/500
+Epoch 00354: val_acc did not improve
+115s - loss: 6.9027e-08 - acc: 1.0000 - val_loss: 6.1141 - val_acc: 0.3750
+Epoch 356/500
+Epoch 00355: val_acc did not improve
+115s - loss: 6.9027e-08 - acc: 1.0000 - val_loss: 6.0235 - val_acc: 0.4000
+Epoch 357/500
+Epoch 00356: val_acc did not improve
+115s - loss: 6.9027e-08 - acc: 1.0000 - val_loss: 6.0288 - val_acc: 0.4000
+Epoch 358/500
+Epoch 00357: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0224 - val_acc: 0.4000
+Epoch 359/500
+Epoch 00358: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0098 - val_acc: 0.4000
+Epoch 360/500
+Epoch 00359: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0247 - val_acc: 0.4000
+Epoch 361/500
+Epoch 00360: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0910 - val_acc: 0.3750
+Epoch 362/500
+Epoch 00361: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0587 - val_acc: 0.4000
+Epoch 363/500
+Epoch 00362: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0601 - val_acc: 0.4000
+Epoch 364/500
+Epoch 00363: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0949 - val_acc: 0.3750
+Epoch 365/500
+Epoch 00364: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.0917 - val_acc: 0.3750
+Epoch 366/500
+Epoch 00365: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1034 - val_acc: 0.3750
+Epoch 367/500
+Epoch 00366: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1134 - val_acc: 0.3750
+Epoch 368/500
+Epoch 00367: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1326 - val_acc: 0.3750
+Epoch 369/500
+Epoch 00368: val_acc did not improve
+115s - loss: 6.9778e-08 - acc: 1.0000 - val_loss: 6.1686 - val_acc: 0.3750
+Epoch 370/500
+Epoch 00369: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1968 - val_acc: 0.3750
+Epoch 371/500
+Epoch 00370: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.2238 - val_acc: 0.4000
+Epoch 372/500
+Epoch 00371: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1855 - val_acc: 0.3750
+Epoch 373/500
+Epoch 00372: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1823 - val_acc: 0.3750
+Epoch 374/500
+Epoch 00373: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1981 - val_acc: 0.3750
+Epoch 375/500
+Epoch 00374: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1955 - val_acc: 0.3750
+Epoch 376/500
+Epoch 00375: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 377/500
+Epoch 00376: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 378/500
+Epoch 00377: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 379/500
+Epoch 00378: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 380/500
+Epoch 00379: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 381/500
+Epoch 00380: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 382/500
+Epoch 00381: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 383/500
+Epoch 00382: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 384/500
+Epoch 00383: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 385/500
+Epoch 00384: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 386/500
+Epoch 00385: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 387/500
+Epoch 00386: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 388/500
+Epoch 00387: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 389/500
+Epoch 00388: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 390/500
+Epoch 00389: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 391/500
+Epoch 00390: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 392/500
+Epoch 00391: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 393/500
+Epoch 00392: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 394/500
+Epoch 00393: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 395/500
+Epoch 00394: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 396/500
+Epoch 00395: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 397/500
+Epoch 00396: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 398/500
+Epoch 00397: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 399/500
+Epoch 00398: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 400/500
+Epoch 00399: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 401/500
+Epoch 00400: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 402/500
+Epoch 00401: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 403/500
+Epoch 00402: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 404/500
+Epoch 00403: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 405/500
+Epoch 00404: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 406/500
+Epoch 00405: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 407/500
+Epoch 00406: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 408/500
+Epoch 00407: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 409/500
+Epoch 00408: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 410/500
+Epoch 00409: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 411/500
+Epoch 00410: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 412/500
+Epoch 00411: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 413/500
+Epoch 00412: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 414/500
+Epoch 00413: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 415/500
+Epoch 00414: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 416/500
+Epoch 00415: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 417/500
+Epoch 00416: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 418/500
+Epoch 00417: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 419/500
+Epoch 00418: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 420/500
+Epoch 00419: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 421/500
+Epoch 00420: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 422/500
+Epoch 00421: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 423/500
+Epoch 00422: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 424/500
+Epoch 00423: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 425/500
+Epoch 00424: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 426/500
+Epoch 00425: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 427/500
+Epoch 00426: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 428/500
+Epoch 00427: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 429/500
+Epoch 00428: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 430/500
+Epoch 00429: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 431/500
+Epoch 00430: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 432/500
+Epoch 00431: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 433/500
+Epoch 00432: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 434/500
+Epoch 00433: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 435/500
+Epoch 00434: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 436/500
+Epoch 00435: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 437/500
+Epoch 00436: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 438/500
+Epoch 00437: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 439/500
+Epoch 00438: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 440/500
+Epoch 00439: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 441/500
+Epoch 00440: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 442/500
+Epoch 00441: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 443/500
+Epoch 00442: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 444/500
+Epoch 00443: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 445/500
+Epoch 00444: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 446/500
+Epoch 00445: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 447/500
+Epoch 00446: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 448/500
+Epoch 00447: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 449/500
+Epoch 00448: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 450/500
+Epoch 00449: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 451/500
+Epoch 00450: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 452/500
+Epoch 00451: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 453/500
+Epoch 00452: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 454/500
+Epoch 00453: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 455/500
+Epoch 00454: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 456/500
+Epoch 00455: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 457/500
+Epoch 00456: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 458/500
+Epoch 00457: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 459/500
+Epoch 00458: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 460/500
+Epoch 00459: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 461/500
+Epoch 00460: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 462/500
+Epoch 00461: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 463/500
+Epoch 00462: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 464/500
+Epoch 00463: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 465/500
+Epoch 00464: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 466/500
+Epoch 00465: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 467/500
+Epoch 00466: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 468/500
+Epoch 00467: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 469/500
+Epoch 00468: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 470/500
+Epoch 00469: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 471/500
+Epoch 00470: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 472/500
+Epoch 00471: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 473/500
+Epoch 00472: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 474/500
+Epoch 00473: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 475/500
+Epoch 00474: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 476/500
+Epoch 00475: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 477/500
+Epoch 00476: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 478/500
+Epoch 00477: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 479/500
+Epoch 00478: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 480/500
+Epoch 00479: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 481/500
+Epoch 00480: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 482/500
+Epoch 00481: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 483/500
+Epoch 00482: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 484/500
+Epoch 00483: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 485/500
+Epoch 00484: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 486/500
+Epoch 00485: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 487/500
+Epoch 00486: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 488/500
+Epoch 00487: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 489/500
+Epoch 00488: val_acc did not improve
+116s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 490/500
+Epoch 00489: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 491/500
+Epoch 00490: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 492/500
+Epoch 00491: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 493/500
+Epoch 00492: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 494/500
+Epoch 00493: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 495/500
+Epoch 00494: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 496/500
+Epoch 00495: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 497/500
+Epoch 00496: val_acc did not improve
+114s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 498/500
+Epoch 00497: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 499/500
+Epoch 00498: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
+Epoch 500/500
+Epoch 00499: val_acc did not improve
+115s - loss: 6.8276e-08 - acc: 1.0000 - val_loss: 6.1953 - val_acc: 0.3750
